@@ -27,17 +27,6 @@ C_GREEN=(32,128,32)
 C_RED=(255,0,0)
 C_BLACK=(0,0,0,)
 
-# создание врагов и мин 
-en = Enemy(300,330)
-all_sprites.add(en)
-enemies.add(en)
-
-bomb = Enemy(250,200, img_file_bomb, 60,60)
-bombs.add(bomb)
-
-door = FinalSprite(img_file_door, win_width + 500, win_height - 150, 0)
-all_sprites.add(door)
-
 #final sprite
 class FinalSprite(sprite.Sprite):
     def __init__(self, player_image, player_x , player_y, player_speed):
@@ -49,3 +38,34 @@ class FinalSprite(sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = player_x
         self.rect.y = player_y
+#основной цикл
+run = True
+finished = False
+
+while run:
+    for e in event.get():
+        if e.type == QUIT
+            run = False
+        elif e.type == KEYDOWN:
+            if e.key == K_LEFT:
+                robin.x_speed = -5
+            elif e.key == K_RIGHT:
+                robin.x_speed = 5
+            elif e.key == K_UP:
+                robin.jump(-7)
+
+        elif e.type == KEYUP:
+            if e.key == K_LEFT:
+                robin.x_speed = 0
+            elif e.key == K_RIGHT:
+                robin.x-speed = 0
+#запуск игры
+display.set_caption('ARCADA')
+window = display.set_mode([win_width, win_height])
+back = transform.scale(image.load(img_file_back).convert(), (win_width, win_height))
+all_sprites = sprite.Group()
+bariers = sprite.Group()
+enemies = sprite.Group()
+bombs = sprite.Group()
+robin = Hero(img_file_hero)
+all_sprites.add(robin)
