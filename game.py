@@ -153,3 +153,24 @@ if not finished:
 
             text = font.render("YOU WIN!", 1, C_RED)
             window.blit(text, (250, 250))
+#основной цикл
+run = True
+finished = False
+
+while run:
+    for e in event.get():
+        if e.type == QUIT:
+            run = False
+        elif e.type == KEYDOWN:
+            if e.key == K_LEFT:
+                robin.x_speed = -5
+            elif e.key == K_RIGHT:
+                robin.x_speed = 5
+            elif e.key == K_UP:
+                robin.jump(-7)
+
+        elif e.type == KEYUP:
+            if e.key == K_LEFT:
+                robin.x_speed = 0
+            elif e.key == K_RIGHT:
+                robin.x_speed = 0
